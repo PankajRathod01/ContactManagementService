@@ -14,4 +14,6 @@ import com.cms.model.Contact;
  */
 public interface ContactRepository extends JpaRepository<Contact, Long>, JpaSpecificationExecutor<Contact>{
 
+	boolean existsByPhoneNumber(String phoneNumber);
+
 }

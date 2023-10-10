@@ -36,9 +36,14 @@ public class ContactServiceImpl implements ContactService {
 				|| contactRequest.getEmail() == null || contactRequest.getPhoneNumber() == null) {
 			throw new BadRequestException(ErrorMessagesConstant.BAD_REQUEST_MSG);
 		}
+		if(contactRepo.existsByPhoneNumber(contactRequest.getPhoneNumber())) {
+			throw new BadRequestException(ErrorMessagesConstant.BAD_REQUEST_CONATCT_ALLREADY_EXIST);
+		}
+		
 		Contact contact = convertToContactEntity(contactRequest);
 
 		Contact createdContact = contactRepo.save(contact);
+		
 
 		return convertEntityToDto(createdContact);
 	}
