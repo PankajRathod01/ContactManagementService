@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,7 +36,8 @@ public class Contact {
 	private String lastName;
 	@Column(name = "email")
 	private String email;
-	@Column(name = "phone_number", length = 10)
+	@Column(name = "phone_number", unique = true, length = 10)
+	@Size(max = 10,message = "max size 10")
 	private String phoneNumber;
 
 	@Column(name = "createdAt")

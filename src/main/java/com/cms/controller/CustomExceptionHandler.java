@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.cms.dto.ErrorResponse;
 import com.cms.exceptions.BadRequestException;
 import com.cms.exceptions.ResourceNotFoundException;
+import com.cms.service.utils.ErrorMessagesConstant;
 
 /**
  * @author pankaj.rathods
@@ -41,7 +42,8 @@ public class CustomExceptionHandler {
 	public ResponseEntity<ErrorResponse> handleGeneralException(Exception exception) {
 		ErrorResponse errorResponse = new ErrorResponse();
 		errorResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-		errorResponse.setMessage(exception.getMessage());
+		System.out.println("exception" + exception.getMessage());
+		errorResponse.setMessage(ErrorMessagesConstant.INTERNAL_SERVER_ERROR);
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
 	}
 
