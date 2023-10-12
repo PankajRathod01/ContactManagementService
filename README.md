@@ -1,2 +1,2 @@
 # ContactManagementService
- http://127.0.0.1:9001/
+ http://127.0.0.1:8080/
